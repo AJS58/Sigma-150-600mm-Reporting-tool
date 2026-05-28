@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cameracal Sigma 150-600mm USB Dock Calibration Report Tool</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="logo-panel"><img src="assets/cameracal-logo.png" alt="Cameracal Services" /></div>
+      <nav>
+        <a href="#customer" class="active">Customer Details</a>
+        <a href="#lens">Lens Information</a>
+        <a href="#calibration">Calibration Results</a>
+        <a href="#config">Lens Configuration</a>
+        <a href="#notes">Technician Notes</a>
+      </nav>
+      <div class="side-footer">
+        <strong>Cameracal Services</strong><br />
+        <span>© 2026 Cameracal Services</span><br />
+        <a href="https://www.cameracalservices.co.uk" target="_blank">www.cameracalservices.co.uk</a>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <h1>Sigma 150-600mm USB Dock Calibration Report</h1>
+        <p>Create professional calibration reports for Sigma 150-600mm Contemporary / Sport lenses.</p>
+      </header>
+
+      <section id="customer" class="card">
+        <h2>Customer Details</h2>
+        <div class="grid four">
+          <label>Customer Name<input id="customerName" placeholder="Enter customer name" /></label>
+          <label>Reference Number<input id="reference" value="CC-SIGMA-001" /></label>
+          <label>Date of Calibration<input id="date" type="date" /></label>
+          <label>Technician<input id="technician" value="Anthony Sinfield" /></label>
+        </div>
+      </section>
+
+      <section id="lens" class="card">
+        <h2>Lens Information</h2>
+        <div class="grid three">
+          <label>Camera Body<input id="cameraBody" placeholder="Enter camera body" /></label>
+          <label>Lens Model
+            <select id="lensModel">
+              <option>Sigma 150-600mm F5-6.3 DG OS HSM Contemporary</option>
+              <option>Sigma 150-600mm F5-6.3 DG OS HSM Sport</option>
+            </select>
+          </label>
+          <label>Lens Version
+            <select id="lensVersion">
+              <option>Contemporary</option>
+              <option>Sport</option>
+            </select>
+          </label>
+          <label>Lens Mount
+            <select id="mount">
+              <option>Canon EF</option>
+              <option>Nikon F</option>
+              <option>Sigma SA</option>
+            </select>
+          </label>
+          <label>Serial Number<input id="serialNumber" placeholder="Enter serial number" /></label>
+          <label>Firmware Version<input id="firmware" placeholder="Enter firmware version" /></label>
+        </div>
+      </section>
+
+      <section id="calibration" class="card">
+        <h2>Calibration Results</h2>
+        <p class="summary">Adjustments were applied using the Sigma USB Dock and Sigma Optimization Pro software at Cameracal’s selected practical working distances.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Focal Length</th>
+                <th>Calibration Distance<br><small>(Working Distance)</small></th>
+                <th>Final USB Dock Adjustment<br><small>(-20 to +20)</small></th>
+                <th>Optimum Aperture<br><small>(Recommended)</small></th>
+                <th>Notes<br><small>(Optional)</small></th>
+              </tr>
+            </thead>
+            <tbody id="calibrationRows"></tbody>
+          </table>
+        </div>
+        <p class="note">Note: Working distances are measured from the front of the lens to the test target.</p>
+      </section>
+
+      <section id="config" class="card">
+        <h2>Lens Configuration <span>(Optional)</span></h2>
+        <div class="grid six">
+          <label>AF Speed Priority<select id="afSpeed"><option>Standard</option><option>Speed Priority</option><option>Focus Accuracy Priority</option><option>Not configured</option></select></label>
+          <label>OS (Stabiliser) Mode<select id="osMode"><option>Standard</option><option>Dynamic</option><option>Moderate</option><option>Off</option><option>Not configured</option></select></label>
+          <label>Focus Limiter<select id="focusLimiter"><option>Full range</option><option>10m – Infinity</option><option>Custom</option><option>Not configured</option></select></label>
+          <label>Custom Mode C1<input id="c1" placeholder="e.g. Birds in Flight" /></label>
+          <label>Custom Mode C2<input id="c2" placeholder="e.g. General Purpose" /></label>
+          <label>Firmware Updated<select id="firmwareUpdated"><option>No</option><option>Yes</option><option>Checked only</option></select></label>
+        </div>
+      </section>
+
+      <section id="notes" class="card">
+        <h2>Technician Notes <span>(Optional)</span></h2>
+        <textarea id="technicianNotes" placeholder="Enter any additional notes about the calibration..."></textarea>
+      </section>
+
+      <div class="actions">
+        <button class="secondary" id="clearBtn">Clear All</button>
+        <button class="primary" id="pdfBtn">Generate PDF</button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
